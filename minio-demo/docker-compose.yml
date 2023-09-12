@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  minio:
+    image: minio/minio
+    container_name: minio_server
+    hostname: "minio"
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - ./data:/data
+      - ./config:/root/.minio/
+    environment:
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=12345678
+    command: server --console-address ':9001' /data  #指定容器中的目录 /data
