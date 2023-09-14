@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  service1:
+    image: service1:1.0.0
+    container_name: service1
+    build:
+      context: ./
+      dockerfile: ./cmd/service1/Dockerfile
+#      cache_from:
+#        - service1:1.0.0
+    ports:
+      - "8001:8001"
+
+  service2:
+    image: service2:1.0.0
+    container_name: service2
+    build:
+      context: ./
+      dockerfile: ./cmd/service2/Dockerfile
+#      cache_from:
+#        - service2:1.0.0
+    ports:
+      - "8002:8002"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: "prometheus_server"
+    ports:
+      - "${PROMETHEUS_WEB_PORT}:9090"
+    environment:
+      TZ: "${TZ}"
+    volumes:
+      - ./prometheus/prometheus-config.yml:/etc/prometheus/prometheus-config.yml
+    command:
+      - --config.file=/etc/prometheus/prometheus-config.yml
+
+  grafana:
+    image: grafana/grafana
+    container_name: "grafana"
+    ports:
+      - "${GRAFANA_WEB_PORT}:3000"
+    environment:
+      TZ: "${TZ}"
