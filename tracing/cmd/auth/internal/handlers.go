@@ -2,7 +2,7 @@ package internal
 
 import (
 	"github.com/gin-gonic/gin"
-	"tracing/cmd/common/api"
+	"tracing/pkg/common/api"
 )
 
 func GenTokenHandler() gin.HandlerFunc {

@@ -1,6 +1,8 @@
 package internal
 
-import "tracing/cmd/common/api"
+import (
+	"tracing/pkg/common/api"
+)
 
 type (
 	AuthVerifyReq struct {

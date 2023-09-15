@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-resty/resty/v2"
-	"tracing/cmd/common/api"
-	"tracing/cmd/registry"
+	"tracing/pkg/common/api"
+	"tracing/pkg/registry"
 )
 
 func LoginHandler() gin.HandlerFunc {

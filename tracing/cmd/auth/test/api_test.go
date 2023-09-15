@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/go-resty/resty/v2"
 	"testing"
-	"tracing/cmd/registry"
+	"tracing/pkg/registry"
 )
 
 func TestGenTokenRequest(t *testing.T) {
